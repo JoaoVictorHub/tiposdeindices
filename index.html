@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Índices em Bancos de Dados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tipos de Índices em Bancos de Dados</h1>
+        <p>Entenda os principais tipos de índices e suas características.</p>
+    </header>
+    <main>
+        <section id="bitmap">
+            <h2>Índice Bitmap</h2>
+            <p><strong>Descrição:</strong> Um índice Bitmap usa uma estrutura de bits para representar a presença ou ausência de valores em uma coluna. Cada valor distinto na coluna tem um bitmap associado a ele, onde cada bit representa uma linha na tabela.</p>
+            <p><strong>Características:</strong></p>
+            <ul>
+                <li><strong>Eficiente em Colunas com Poucos Valores Distintos:</strong> Ideal para colunas com um número reduzido de valores distintos (por exemplo, gênero, status).</li>
+                <li><strong>Compactação de Dados:</strong> Pode ser muito eficiente em termos de espaço quando o número de valores distintos é baixo.</li>
+                <li><strong>Consultas Rápidas:</strong> Permite consultas rápidas, especialmente para operações de união e interseção de bitmaps.</li>
+                <li><strong>Não Ideal para Colunas Altamente Cardinais:</strong> Pode não ser eficiente para colunas com um grande número de valores distintos.</li>
+            </ul>
+            <p><strong>Vantagens:</strong></p>
+            <ul>
+                <li>Reduz o espaço em disco quando há poucos valores distintos.</li>
+                <li>Rápido para operações de consulta complexas que envolvem combinações de condições.</li>
+            </ul>
+            <p><strong>Desvantagens:</strong></p>
+            <ul>
+                <li>Não é adequado para colunas com muitos valores distintos devido ao tamanho potencial dos bitmaps.</li>
+                <li>Pode ser menos eficiente para operações de atualização, inserção e exclusão.</li>
+            </ul>
+        </section>
+        
+        <section id="hash">
+            <h2>Índice Hash</h2>
+            <p><strong>Descrição:</strong> Um índice Hash usa uma função hash para converter a chave de índice em um endereço de armazenamento onde o valor correspondente está localizado. A função hash distribui uniformemente as chaves para reduzir colisões.</p>
+            <p><strong>Características:</strong></p>
+            <ul>
+                <li><strong>Acesso Direto:</strong> Permite buscas rápidas e diretas para valores específicos.</li>
+                <li><strong>Não Adequado para Intervalos:</strong> Não é ideal para consultas que requerem operações de intervalo (por exemplo, encontrar todos os valores entre 10 e 20).</li>
+                <li><strong>Resolução de Colisões:</strong> Pode usar técnicas como encadeamento ou endereçamento aberto para lidar com colisões de hash.</li>
+            </ul>
+            <p><strong>Vantagens:</strong></p>
+            <ul>
+                <li>Consultas para valores específicos são extremamente rápidas.</li>
+                <li>Boa performance para grandes volumes de dados quando as buscas são baseadas em igualdade.</li>
+            </ul>
+            <p><strong>Desvantagens:</strong></p>
+            <ul>
+                <li>Não suporta buscas por intervalo ou ordenação.</li>
+                <li>A eficiência pode ser afetada se a função hash não distribuir uniformemente as chaves.</li>
+            </ul>
+        </section>
+
+        <section id="b-tree">
+            <h2>Índice B-Tree</h2>
+            <p><strong>Descrição:</strong> Um índice B-Tree é uma estrutura de dados de árvore balanceada que mantém os dados em ordem e permite inserções, exclusões e buscas eficientes. A B-Tree é amplamente utilizada em sistemas de gerenciamento de banco de dados relacionais.</p>
+            <p><strong>Características:</strong></p>
+            <ul>
+                <li><strong>Ordenação e Balanceamento:</strong> Mantém os dados ordenados e balanceados, o que facilita operações de busca, inserção e exclusão.</li>
+                <li><strong>Suporte a Consultas de Intervalo:</strong> Ideal para consultas que envolvem intervalos ou ordenação.</li>
+                <li><strong>Performance Consistente:</strong> O tempo de acesso é logarítmico em relação ao número de registros.</li>
+            </ul>
+            <p><strong>Vantagens:</strong></p>
+            <ul>
+                <li>Excelente para operações de leitura e escrita em grandes volumes de dados.</li>
+                <li>Suporta eficientemente consultas de intervalo e ordenação.</li>
+            </ul>
+            <p><strong>Desvantagens:</strong></p>
+            <ul>
+                <li>Pode consumir mais espaço em disco comparado a outros tipos de índices, especialmente para tabelas grandes.</li>
+                <li>A performance pode degradar se não for bem mantido, especialmente se houver muitas atualizações.</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 | Todos os direitos reservados.<br> <strong>Feito por: Pedro Gabriel dos Santos,<br> João Victor Pereira de Castro,<br> Carlos Eduardo Cândido,<br> Enoque Paulino Costa.</strong></p>
+    </footer>
+</body>
+</html>
